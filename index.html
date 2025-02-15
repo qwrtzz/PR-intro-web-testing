@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Выбор языка</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Выберите язык / Select a language</h1>
+      <button id="to-russian">Русский</button>
+      <button id="to-english">English</button>
+    </div>
+    <script>
+      const langButton = document.getElementById("switch-language");
+      // Переключение языка
+      if (langButton) {
+        langButton.addEventListener("click", function () {
+          const currentLang = window.location.pathname.includes("chat_en.html")
+            ? "en"
+            : "ru";
+          const newLang = currentLang === "ru" ? "en" : "ru";
+          window.location.href =
+            newLang === "ru" ? "chat_ru.html" : "chat_en.html";
+        });
+      }
+
+      // Переключение языка на главной странице
+      const toRussian = document.getElementById("to-russian");
+      const toEnglish = document.getElementById("to-english");
+
+      if (toRussian) {
+        toRussian.addEventListener(
+          "click",
+          () => (window.location.href = "chat_ru.html")
+        );
+      }
+
+      if (toEnglish) {
+        toEnglish.addEventListener(
+          "click",
+          () => (window.location.href = "chat_en.html")
+        );
+      }
+    </script>
+  </body>
+</html>
