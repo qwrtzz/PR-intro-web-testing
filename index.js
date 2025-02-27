@@ -40,6 +40,7 @@ const helpLink = document.getElementById("help-link");
 const xssLink = document.getElementById("xss-link");
 const chatList = document.getElementById("chat-list");
 
+loadLocalization();
 loadMessages();
 
 // Установка локализации из состояния на странице
@@ -107,4 +108,10 @@ function loadMessages() {
   savedMessages.forEach((messageText) => {
     addMessage(messageText);
   });
+}
+
+// Загрузка локализации из LocalStorage
+function loadLocalization() {
+  state.localization = localStorage.getItem("localization") || 'ru';
+  setLocalization();
 }
