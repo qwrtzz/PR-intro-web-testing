@@ -2,46 +2,34 @@
 <html lang="ru">
   <head>
     <meta charset="UTF-8" />
-    <title>Выбор языка</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Безопасный чат</title>
     <link rel="stylesheet" href="styles.css" />
+    <script defer src="./index.js"></script>
   </head>
   <body>
-    <div class="container">
-      <h1>Выберите язык / Select a language</h1>
-      <button id="to-russian">Русский</button>
-      <button id="to-english">English</button>
+    <h1 id="header">Безопасный чат</h1>
+    <button id="switch-language-button">Переключить язык</button>
+
+    <div class="chat">
+      <img id="image" class="chat__image" src="img/banner.jpg" alt="Баннер чата" />
+      <ul id="chat-list" class="chat__chat-list"></ul>
+      <div class="chat__input-container">
+        <input type="text" id="message-input" class="chat__message-input" placeholder="Введите сообщение" />
+        <button id="send-button">Отправить</button>
+      </div>
     </div>
-    <script>
-      const langButton = document.getElementById("switch-language");
-      // Переключение языка
-      if (langButton) {
-        langButton.addEventListener("click", function () {
-          const currentLang = window.location.pathname.includes("chat_en.html")
-            ? "en"
-            : "ru";
-          const newLang = currentLang === "ru" ? "en" : "ru";
-          window.location.href =
-            newLang === "ru" ? "chat_ru.html" : "chat_en.html";
-        });
-      }
 
-      // Переключение языка на главной странице
-      const toRussian = document.getElementById("to-russian");
-      const toEnglish = document.getElementById("to-english");
-
-      if (toRussian) {
-        toRussian.addEventListener(
-          "click",
-          () => (window.location.href = "chat_ru.html")
-        );
-      }
-
-      if (toEnglish) {
-        toEnglish.addEventListener(
-          "click",
-          () => (window.location.href = "chat_en.html")
-        );
-      }
-    </script>
+    <ul class="links-list">
+      <li class="links-list__item">
+        <a id="about-link" href="./pages/about.html">О нас</a>
+      </li>
+      <li class="links-list__item">
+        <a id="help-link" href="./pages/help.html">Помощь</a>
+      </li>
+      <li class="links-list__item">
+        <a id="xss-link" href="https://htmlacademy.ru/blog/js/xss" target="_blank">XSS</a>
+      </li>
+    </ul>
   </body>
 </html>
