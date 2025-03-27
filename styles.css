@@ -147,16 +147,19 @@ button:hover {
 
 /* Адаптация под мобильные устройства */
 @media (max-width: 480px) {
-  .chat__input-container {
-    flex-direction: column;
+  .chat {
+    border-radius: 0;
+    padding: 15px;
+  }
+  
+  button {
+    width: 100%;
+  }
+  
+  .links-list__item a {
+    font-size: 14px;
   }
 
-  .links-list {
-    width: 100%;
-    gap: 0px;
-    flex-direction: column;
-    border-radius: 12px;
-  }
 
   .links-list__item {
     padding: 10px 0;

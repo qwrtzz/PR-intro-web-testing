@@ -6,13 +6,21 @@
     <title>Безопасный чат</title>
     <link rel="stylesheet" href="styles.css" />
     <script defer src="./index.js"></script>
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
   </head>
   <body>
     <h1 id="header">Безопасный чат</h1>
     <button id="switch-language-button">Переключить язык</button>
 
     <div class="chat">
-      <img id="image" class="chat__image" src="img/banner.jpg" alt="Баннер чата" />
+      <img 
+  id="image" 
+  src="img/banner.jpg" 
+  alt="Баннер чата" 
+  loading="lazy" 
+  width="450" 
+  height="200"
+>
       <ul id="chat-list" class="chat__chat-list"></ul>
       <div class="chat__input-container">
         <input type="text" id="message-input" class="chat__message-input" placeholder="Введите сообщение" />
@@ -28,7 +36,12 @@
         <a id="help-link" href="./pages/help.html">Помощь</a>
       </li>
       <li class="links-list__item">
-        <a id="xss-link" href="https://htmlacademy.ru/blog/js/xss" target="_blank">XSS</a>
+        <a 
+  id="xss-link" 
+  href="https://htmlacademy.ru/blog/js/xss" 
+  target="_blank" 
+  rel="noopener noreferrer"
+>XSS</a>
       </li>
     </ul>
   </body>

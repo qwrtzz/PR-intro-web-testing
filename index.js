@@ -81,10 +81,10 @@ function addMessage(messageText) {
 // Отправка сообщения (для событий нажатия на кнопку и ввода Enter)
 function sendMessage() {
   const messageText = messageInput.value.trim();
-  if (messageText === "") return;
+  if (messageText === "" || messageText.length > 500) return;
 
   messageInput.value = "";
-  state.messages.push(messageText);
+  state.messages.push(escapeHTML(messageText));
   localStorage.setItem("messages", JSON.stringify(state.messages));
   addMessage(messageText);
 }
@@ -115,3 +115,27 @@ function loadLocalization() {
   state.localization = localStorage.getItem("localization") || 'ru';
   setLocalization();
 }
+// Экранирование HTML-символов
+const escapeHTML = (str) => {
+  const div = document.createElement('div');
+  div.textContent = str;
+  return div.innerHTML;
+};
+
+function addMessage(messageText) {
+  const messageElement = document.createElement("li");
+  messageElement.classList.add("message", "user-message");
+  messageElement.textContent = escapeHTML(messageText); // Экранирование
+  chatList.append(messageElement);
+}
+// Убедитесь, что функция loadMessages() вызывается при загрузке
+window.addEventListener('DOMContentLoaded', () => {
+  loadLocalization();
+  loadMessages();
+});
+messageInput.addEventListener("keyup", (event) => {
+  if (event.key === "Enter" && !event.shiftKey) {
+    event.preventDefault(); // Предотвращаем перенос строки
+    sendMessage();
+  }
+});
